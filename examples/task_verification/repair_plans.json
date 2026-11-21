@@ -1,0 +1,23 @@
+{
+  "19419": {
+    "reason": "受控修订演示：首轮故意仅检查文件存在，观察部分解留下空文件时的误接受。正式验证使用 plans.json。",
+    "partial": {
+      "omit": "f.write(m.decode())",
+      "replacement": "pass",
+      "reason": "删除输出内容写入步骤，其余参考步骤保留并正常退出。",
+      "requirement": "UTF-8 plain text containing exactly `hello world`, with no trailing newline or additional bytes."
+    },
+    "checks": [
+      {"id": "result_file", "requirement": "Write the recovered message to `/app/result.txt`", "path": "/app/result.txt", "kind": "file", "op": "eq", "expected": true}
+    ],
+    "revisions": [
+      {
+        "reason": "Partial 首轮文件存在断言通过，无法拒绝空文件；恢复说明要求的精确内容断言。说明已明确内容和换行要求，无需修改。",
+        "checks": [
+          {"id": "result_file", "requirement": "Write the recovered message to `/app/result.txt`", "path": "/app/result.txt", "kind": "file", "op": "eq", "expected": true},
+          {"id": "recovered_message", "requirement": "UTF-8 plain text containing exactly `hello world`, with no trailing newline or additional bytes.", "path": "/app/result.txt", "kind": "text", "op": "eq", "expected": "hello world"}
+        ]
+      }
+    ]
+  }
+}

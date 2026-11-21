@@ -1,0 +1,23 @@
+{
+  "redis-smoke": {
+    "base_image": "public.ecr.aws/docker/library/python:3.12-slim-bookworm",
+    "workdir": "/app",
+    "system_packages": [],
+    "runtimes": {"python": "3.12"},
+    "setup": "",
+    "initial_files": [],
+    "outputs": ["/app/result.txt"],
+    "services": {
+      "redis": {
+        "image": "redis:latest",
+        "healthcheck": {
+          "test": ["CMD", "redis-cli", "ping"],
+          "interval": "2s",
+          "timeout": "2s",
+          "retries": 30
+        }
+      }
+    },
+    "notes": "Synthetic integration fixture to exercise Compose readiness, DNS, replay and volume cleanup."
+  }
+}

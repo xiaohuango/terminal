@@ -1,0 +1,50 @@
+{
+  "11696": {
+    "keep": [[6, 6], [8, 8], [9, 9]],
+    "goal": "Make the nsenter and docker-enter utilities available system-wide and leave a MariaDB container running for testing.",
+    "requirements": [
+      {
+        "text": "Install the nsenter binary at `/usr/local/bin/nsenter` with permissions `0755`.",
+        "path": "/usr/local/bin/nsenter",
+        "format": "binary"
+      },
+      {
+        "text": "Install the docker-enter shell script at `/usr/local/bin/docker-enter` with permissions `0755`.",
+        "path": "/usr/local/bin/docker-enter",
+        "format": "shell script"
+      },
+      {
+        "text": "The `testing` container must use the `russmckendrick/mariadb` image and expose its port 3306 on host port 33306.",
+        "path": null,
+        "format": null
+      }
+    ],
+    "checks": [
+      {"status": "unmet", "lines": [], "reason": "The reference contains no installation or permission change for nsenter."},
+      {"status": "unmet", "lines": [], "reason": "The reference contains no installation or permission change for docker-enter."},
+      {"status": "met", "lines": [4], "reason": "The Docker invocation requests a detached container with the specified name, image and port mapping."}
+    ],
+    "omissions": []
+  },
+  "19419": {
+    "keep": [[5, 5], [7, 16], [17, 17]],
+    "goal": "Use Python’s cryptography library to demonstrate a Fernet round trip for `hello world` with a freshly generated key.",
+    "requirements": [
+      {
+        "text": "Recover the original message by decrypting the ciphertext produced from that message with the same Fernet key.",
+        "path": null,
+        "format": null
+      },
+      {
+        "text": "Write the recovered message to `/app/result.txt` as UTF-8 plain text containing exactly `hello world`, with no trailing newline or additional bytes.",
+        "path": "/app/result.txt",
+        "format": "UTF-8 plain text"
+      }
+    ],
+    "checks": [
+      {"status": "met", "lines": [4, 5, 6, 7, 8, 9, 13], "reason": "The program generates a fresh Fernet key, encrypts and decrypts the given message with it, and Bash invokes the program."},
+      {"status": "met", "lines": [6, 9, 10, 11, 13], "reason": "The invoked program writes the recovered ASCII message to the exact path without appending newline bytes."}
+    ],
+    "omissions": []
+  }
+}

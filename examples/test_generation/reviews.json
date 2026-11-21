@@ -1,0 +1,14 @@
+{
+  "19419": {
+    "checks": [
+      {"id": "result_file", "requirement": "Write the recovered message to `/app/result.txt`", "path": "/app/result.txt", "kind": "file", "op": "eq", "expected": true},
+      {"id": "recovered_message", "requirement": "UTF-8 plain text containing exactly `hello world`, with no trailing newline or additional bytes.", "path": "/app/result.txt", "kind": "text", "op": "eq", "expected": "hello world"}
+    ]
+  },
+  "redis-smoke": {
+    "checks": [
+      {"id": "result_file", "requirement": "response to `/app/result.txt` as UTF-8 text without a trailing newline.", "path": "/app/result.txt", "kind": "file", "op": "eq", "expected": true},
+      {"id": "pong_response", "requirement": "`PONG` response to `/app/result.txt` as UTF-8 text without a trailing newline.", "path": "/app/result.txt", "kind": "text", "op": "eq", "expected": "PONG"}
+    ]
+  }
+}

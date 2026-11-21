@@ -1,0 +1,24 @@
+{
+  "19419": {
+    "base_image": "public.ecr.aws/docker/library/python:3.12-slim-bookworm",
+    "workdir": "/app",
+    "system_packages": [],
+    "runtimes": {"python": "3.12"},
+    "setup": "python -m pip install --no-cache-dir cryptography==44.0.3",
+    "initial_files": [],
+    "outputs": ["/app/script.py", "/app/result.txt"],
+    "services": {},
+    "notes": "The reference creates script.py and result.txt. Only Python and cryptography belong in the initial image."
+  },
+  "331228": {
+    "base_image": "node:22-bookworm-slim",
+    "workdir": "/app",
+    "system_packages": [],
+    "runtimes": {"node": "22"},
+    "setup": "npm install --omit=dev --no-audit --no-fund extra-iterable@3.2.16",
+    "initial_files": [],
+    "outputs": ["/app/script.js", "/app/result.json"],
+    "services": {},
+    "notes": "Use with output/synthesis_llm_verified/tasks. The fs module is built into Node.js."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "19419": {
+    "partial": {
+      "omit": "f.write(m.decode())",
+      "replacement": "pass",
+      "reason": "保留密钥生成、加密、解密与文件创建，但删除写入恢复消息的步骤，留下空文件。pass 仅保持 Python with 语句语法有效。",
+      "requirement": "UTF-8 plain text containing exactly `hello world`, with no trailing newline or additional bytes."
+    }
+  }
+}

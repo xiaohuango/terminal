@@ -1,0 +1,23 @@
+{
+  "196065": {
+    "state_action_alignment": 3,
+    "task_complexity": 2,
+    "signal_clarity": 2,
+    "assessment_source": "manual_static_review",
+    "reasoning": "参考脚本覆盖默认和显式并行、容错、复合命令及调试场景，并将输出集中到 /app/result.txt。"
+  },
+  "256723": {
+    "state_action_alignment": 3,
+    "task_complexity": 2,
+    "signal_clarity": 2,
+    "assessment_source": "manual_static_review",
+    "reasoning": "参考脚本初始化 ShellSpec 项目，创建函数与对应测试，并将测试结果写入 /app/result.txt。"
+  },
+  "331228": {
+    "state_action_alignment": 3,
+    "task_complexity": 2,
+    "signal_clarity": 2,
+    "assessment_source": "manual_static_review",
+    "reasoning": "参考脚本实现任务指定的五种 zip 场景，结果写入带固定键的 /app/result.json。"
+  }
+}
